@@ -13,7 +13,7 @@ function ItemList(props) {
     useEffect(() => {
         setLoadingMessage("Loading");
         fetch(
-            "http://bad-api-assignment.reaktor.com/v2/products/" +
+            "https://bad-api-assignment.reaktor.com/v2/products/" +
                 props.productName
         )
             .then((response) => response.json())
@@ -100,7 +100,7 @@ function ItemList(props) {
     async function fetchManufacturerData(manufacturers) {
         const manufacturerData = await manufacturers.map(async (elem) => {
             var response = await fetch(
-                "http://bad-api-assignment.reaktor.com/v2/availability/" + elem
+                "https://bad-api-assignment.reaktor.com/v2/availability/" + elem
             );
             var data = await response.json();
             if (data.response === "[]") {
@@ -110,7 +110,7 @@ function ItemList(props) {
                 //Set 5 as arbitrary times for retrying fetch.
                 for (let i = 0; i < 5 && data.response === "[]"; i++) {
                     response = await fetch(
-                        "http://bad-api-assignment.reaktor.com/v2/availability/" +
+                        "https://bad-api-assignment.reaktor.com/v2/availability/" +
                             elem
                     );
                     data = await response.json();
