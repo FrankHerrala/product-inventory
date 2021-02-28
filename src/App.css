@@ -1,38 +1,140 @@
 .App {
-  text-align: center;
+    display: grid;
+    height: 100vh;
+    grid-template-rows: auto 1fr auto;
+    font-family: monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+header {
+    text-align: center;
+    color: white;
+    background: #79a3b1;
+    padding: 2rem;
+    font-weight: 1000;
+    font-size: 28px;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+footer {
+    background: #456268;
+    padding: 2rem;
+    text-align: center;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+.MainBody {
+    background-color: white;
+    text-align: center;
 }
 
-.App-link {
-  color: #61dafb;
+.Dot0 {
+    background-color: #456268;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    animation: AppearAndDisapper 1s linear infinite;
+    animation-delay: 0;
 }
 
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.Dot1 {
+    background-color: #456268;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    animation: AppearAndDisapper 1s linear infinite;
+    animation-delay: 0.3s;
+}
+
+.Dot2 {
+    background-color: #456268;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    margin: 0 5px;
+    animation: AppearAndDisapper 1s linear infinite;
+    animation-delay: 0.6s;
+}
+
+.Loading {
+    margin: 0 5px;
+    font-size: 24px;
+}
+
+@keyframes AppearAndDisapper {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+.MessageContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    font-size: 24px;
+}
+
+table {
+    margin: 10px;
+    flex-basis: max-content;
+    text-align: left;
+}
+table,
+th,
+td {
+    border-collapse: collapse;
+    text-align: left;
+    font-family: monospace;
+    font-size: 18px;
+}
+
+table th {
+    width: 25%;
+    border-bottom: 1px solid #456268;
+}
+
+table td:nth-child(3),
+table th:nth-child(3) {
+    border-left: 1px solid #456268;
+    border-right: 1px solid #456268;
+}
+
+table td:nth-child(1),
+table th:nth-child(1) {
+    border-right: 1px solid #456268;
+}
+
+.Mainbody,
+button {
+    font-family: monospace;
+    padding: 10px;
+    font-size: 16px;
+    font-weight: 1000;
+    background-color: #456268;
+    color: white;
+    border-radius: 10px;
+    margin: 10px;
+    border: none;
+    width: 200px;
+    align-self: center;
+    transition: 0.5s;
+}
+
+.Mainbody,
+button:hover {
+    background-color: #79a3b1;
+    color: white;
+    cursor: pointer;
+    transform: scale(1.1);
+}
+
+.Mainbody,
+button:focus {
+    outline: none;
+    box-shadow: 0 0px 2px 2px #fd7b7b;
 }
