@@ -14,10 +14,7 @@ function ItemList(props) {
         setLoadingMessage("Loading");
         fetch(
             "https://bad-api-assignment.reaktor.com/v2/products/" +
-                props.productName,
-            {
-                mode: "no-cors",
-            }
+                props.productName
         )
             .then((response) => response.json())
             .then((result) => {
@@ -102,11 +99,7 @@ function ItemList(props) {
     async function fetchManufacturerData(manufacturers) {
         const manufacturerData = await manufacturers.map(async (elem) => {
             var response = await fetch(
-                "https://bad-api-assignment.reaktor.com/v2/availability/" +
-                    elem,
-                {
-                    mode: "no-cors",
-                }
+                "https://bad-api-assignment.reaktor.com/v2/availability/" + elem
             );
             var data = await response.json();
             if (data.response === "[]") {
@@ -117,10 +110,7 @@ function ItemList(props) {
                 for (let i = 0; i < 5 && data.response === "[]"; i++) {
                     response = await fetch(
                         "https://bad-api-assignment.reaktor.com/v2/availability/" +
-                            elem,
-                        {
-                            mode: "no-cors",
-                        }
+                            elem
                     );
                     data = await response.json();
                 }
