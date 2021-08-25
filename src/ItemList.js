@@ -14,7 +14,10 @@ function ItemList(props) {
         setLoadingMessage("Loading");
         fetch(
             "https://bad-api-assignment.reaktor.com/v2/products/" +
-                props.productName
+                props.productName,
+            {
+                mode: "no-cors",
+            }
         )
             .then((response) => response.json())
             .then((result) => {
@@ -50,9 +53,8 @@ function ItemList(props) {
             const allProductInfo = await Promise.all(
                 manufacturerAvailabilities
             ).then((manufacturerData) => {
-                const manufacturerAvailability = manufacturerData.reduce(
-                    reducer
-                );
+                const manufacturerAvailability =
+                    manufacturerData.reduce(reducer);
                 props.setManufacturerAvailability({
                     ...manufacturerAvailability,
                     ...props.manufacturerAvailability,
@@ -100,7 +102,11 @@ function ItemList(props) {
     async function fetchManufacturerData(manufacturers) {
         const manufacturerData = await manufacturers.map(async (elem) => {
             var response = await fetch(
-                "https://bad-api-assignment.reaktor.com/v2/availability/" + elem
+                "https://bad-api-assignment.reaktor.com/v2/availability/" +
+                    elem,
+                {
+                    mode: "no-cors",
+                }
             );
             var data = await response.json();
             if (data.response === "[]") {
@@ -111,7 +117,10 @@ function ItemList(props) {
                 for (let i = 0; i < 5 && data.response === "[]"; i++) {
                     response = await fetch(
                         "https://bad-api-assignment.reaktor.com/v2/availability/" +
-                            elem
+                            elem,
+                        {
+                            mode: "no-cors",
+                        }
                     );
                     data = await response.json();
                 }
